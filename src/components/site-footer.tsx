@@ -33,6 +33,15 @@ export function SiteFooter() {
         </div>
       </div>
       <div className="border-t border-border/60">
+        <div className="container-page py-8 flex flex-col items-center gap-3 text-center">
+          <p className="text-sm text-foreground/80 font-display italic leading-relaxed max-w-xl">
+            Construido por docentes. Impulsado por Inteligencia Artificial. Respaldado por la
+            ética profesional.
+          </p>
+          <span className="gold-rule" />
+        </div>
+      </div>
+      <div className="border-t border-border/60">
         <div className="container-page py-6 flex flex-col md:flex-row items-center justify-between text-xs text-muted-foreground gap-2">
           <span>© {new Date().getFullYear()} {APP_NAME}. Todos los derechos reservados.</span>
           <span className="flex items-center gap-2">

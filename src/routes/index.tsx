@@ -1,33 +1,62 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
+import {
+  MessageCircleQuestion,
+  ListTree,
+  PenLine,
+  ScanSearch,
+  BookMarked,
+  UserCheck,
+  Sparkles,
+  CheckCircle2,
+  Clock,
+  X,
+  Check,
+} from "lucide-react";
 
 export const Route = createFileRoute("/")({
   component: LandingPage,
 });
 
-const benefits = [
-  {
-    title: "Reflexión estructurada",
-    body:
-      "Un método sereno para organizar tu pensamiento pedagógico y llegar a la evaluación con claridad.",
-  },
-  {
-    title: "Criterios oficiales al alcance",
-    body:
-      "Comprende los criterios del instrumento sin ruido, con lenguaje claro y aplicable a tu aula.",
-  },
-  {
-    title: "Escritura profesional",
-    body:
-      "Fortalece la redacción reflexiva que exige el proceso, respetando siempre tu voz y tu autoría.",
-  },
-  {
-    title: "Un proceso, no un atajo",
-    body:
-      "No promete milagros. Promete acompañarte con seriedad, semana a semana, hasta el día clave.",
-  },
+const flowSteps = [
+  { icon: Sparkles, text: "Tú aportas tu experiencia docente." },
+  { icon: MessageCircleQuestion, text: "El Copilot realiza preguntas inteligentes." },
+  { icon: ListTree, text: "Organiza tu reflexión." },
+  { icon: PenLine, text: "Fortalece la redacción." },
+  { icon: ScanSearch, text: "Analiza la coherencia." },
+  { icon: BookMarked, text: "Revisa los criterios oficiales." },
+  { icon: UserCheck, text: "Tú tomas siempre la decisión final." },
 ];
+
+const ecosystem = {
+  available: [
+    { title: "Mentor Evaluación Docente", desc: "Copilot especializado en el instrumento oficial." },
+  ],
+  soon: [
+    { title: "Simulador ECEP", desc: "Práctica del conocimiento específico." },
+    { title: "Biblioteca Docente", desc: "Documentos y rúbricas curadas." },
+    { title: "Banco de Evidencias", desc: "Organiza evidencias de tu práctica." },
+    { title: "Currículum Diversificado", desc: "Herramientas para la diversificación." },
+    { title: "PIE", desc: "Apoyo al Programa de Integración Escolar." },
+    { title: "Gestión Escolar", desc: "Módulos para equipos directivos." },
+  ],
+};
+
+const comparison = {
+  others: [
+    "Cursos grabados",
+    "Material estático",
+    "Respuestas generales",
+    "Debes adaptarte al método",
+  ],
+  ours: [
+    "Copilot conversacional",
+    "Retroalimentación personalizada",
+    "Análisis basado en rúbricas",
+    "Se adapta a tu realidad profesional",
+  ],
+};
 
 const faqs = [
   {
@@ -66,47 +95,155 @@ function LandingPage() {
               <span className="gold-rule" /> Plataforma oficial
             </span>
             <h1 className="mt-6 font-display text-4xl md:text-6xl lg:text-7xl leading-[1.05] max-w-4xl mx-auto text-foreground">
-              La forma más inteligente de preparar tu{" "}
+              La plataforma inteligente para preparar tu{" "}
               <span className="italic text-primary">Evaluación Docente</span>.
             </h1>
             <p className="mt-6 text-base md:text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              Organiza tu trabajo, fortalece tu reflexión profesional y avanza con apoyo especializado.
+              Organiza tu portafolio, fortalece tu reflexión profesional y trabaja junto a un
+              Copilot especializado que respeta completamente tu autoría profesional.
             </p>
             <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
-              <Link to="/auth" className="btn-primary">Ingresar</Link>
-              <Link
-                to="/auth"
-                search={{ tab: "signup" }}
-                className="btn-secondary"
-              >
-                Solicitar acceso
+              <Link to="/auth" className="btn-primary">Ingresar al Portal</Link>
+              <Link to="/auth" search={{ tab: "signup" }} className="btn-secondary">
+                Solicitar acceso Beta
               </Link>
             </div>
             <p className="mt-6 text-xs text-muted-foreground">
-              Pensada para docentes chilenos · Enfoque estoico · Sin promesas vacías
+              Pensada para docentes chilenos · IA ética · Desarrollo continuo
             </p>
           </div>
         </div>
       </section>
 
-      {/* BENEFICIOS */}
-      <section id="beneficios" className="container-page py-20 md:py-28">
-        <div className="max-w-2xl">
+      {/* ASÍ TRABAJA */}
+      <section id="flujo" className="container-page py-20 md:py-28">
+        <div className="max-w-2xl mx-auto text-center">
           <span className="gold-rule" />
-          <h2 className="mt-4 font-display text-3xl md:text-5xl">Un ecosistema, no un atajo.</h2>
+          <h2 className="mt-4 font-display text-3xl md:text-5xl">Así trabaja Profe Estoico</h2>
           <p className="mt-4 text-muted-foreground">
-            Profe Estoico es el inicio de una plataforma pensada para acompañarte durante años en
-            tu desarrollo profesional. Empezamos por la Evaluación Docente.
+            Un flujo sereno y estructurado que acompaña cada etapa de tu preparación.
           </p>
         </div>
-        <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-          {benefits.map((b, i) => (
-            <article key={b.title} className="card-elegant">
-              <div className="text-gold font-display text-2xl">0{i + 1}</div>
-              <h3 className="mt-3 font-display text-lg text-foreground">{b.title}</h3>
-              <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{b.body}</p>
-            </article>
-          ))}
+
+        <ol className="mt-14 max-w-3xl mx-auto space-y-4">
+          {flowSteps.map((step, i) => {
+            const Icon = step.icon;
+            const isLast = i === flowSteps.length - 1;
+            return (
+              <li key={step.text} className="relative">
+                <div className="card-elegant flex items-center gap-4">
+                  <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-md bg-primary/5 text-primary border border-border">
+                    <Icon size={20} strokeWidth={1.6} />
+                  </span>
+                  <div className="flex-1">
+                    <div className="text-[10px] uppercase tracking-widest text-muted-foreground">
+                      Paso 0{i + 1}
+                    </div>
+                    <div className="font-display text-lg text-foreground">{step.text}</div>
+                  </div>
+                </div>
+                {!isLast && (
+                  <div aria-hidden className="flex justify-center py-2">
+                    <span className="h-6 w-px bg-border" />
+                  </div>
+                )}
+              </li>
+            );
+          })}
+        </ol>
+
+        <p className="mt-12 text-center text-sm italic text-muted-foreground max-w-2xl mx-auto">
+          "La IA acompaña el proceso. El juicio profesional siempre pertenece al docente."
+        </p>
+      </section>
+
+      {/* ECOSISTEMA */}
+      <section id="ecosistema" className="bg-secondary/50 border-y border-border/60">
+        <div className="container-page py-20 md:py-28">
+          <div className="max-w-2xl">
+            <span className="gold-rule" />
+            <h2 className="mt-4 font-display text-3xl md:text-5xl">
+              Un ecosistema para el desarrollo profesional
+            </h2>
+            <p className="mt-4 text-muted-foreground">
+              Empezamos con la Evaluación Docente. Crecemos junto a la comunidad.
+            </p>
+          </div>
+
+          <div className="mt-12">
+            <div className="flex items-center gap-3 text-xs uppercase tracking-[0.25em] text-muted-foreground">
+              <CheckCircle2 size={14} className="text-gold" /> Disponible ahora
+            </div>
+            <div className="mt-4 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+              {ecosystem.available.map((m) => (
+                <article key={m.title} className="card-elegant relative">
+                  <span className="absolute top-4 right-4 inline-flex items-center gap-1 rounded-full border border-gold/40 bg-gold/10 px-2 py-0.5 text-[10px] uppercase tracking-widest text-gold-foreground">
+                    <span className="h-1.5 w-1.5 rounded-full bg-gold" /> Activo
+                  </span>
+                  <h3 className="font-display text-lg text-foreground pr-20">{m.title}</h3>
+                  <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{m.desc}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+
+          <div className="mt-14">
+            <div className="flex items-center gap-3 text-xs uppercase tracking-[0.25em] text-muted-foreground">
+              <Clock size={14} /> Próximamente
+            </div>
+            <div className="mt-4 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+              {ecosystem.soon.map((m) => (
+                <article key={m.title} className="card-elegant opacity-90">
+                  <span className="inline-flex items-center gap-1 rounded-full border border-border bg-background px-2 py-0.5 text-[10px] uppercase tracking-widest text-muted-foreground">
+                    En desarrollo
+                  </span>
+                  <h3 className="mt-3 font-display text-lg text-foreground">{m.title}</h3>
+                  <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{m.desc}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* COMPARATIVA */}
+      <section id="comparativa" className="container-page py-20 md:py-28">
+        <div className="max-w-2xl mx-auto text-center">
+          <span className="gold-rule" />
+          <h2 className="mt-4 font-display text-3xl md:text-5xl">¿Por qué Profe Estoico?</h2>
+          <p className="mt-4 text-muted-foreground">
+            Un método vivo, personalizado y anclado en la práctica real de aula.
+          </p>
+        </div>
+
+        <div className="mt-14 grid gap-6 md:grid-cols-2 max-w-4xl mx-auto">
+          <div className="rounded-xl border border-border bg-secondary/40 p-7">
+            <div className="text-[10px] uppercase tracking-widest text-muted-foreground">
+              Otros sistemas
+            </div>
+            <h3 className="mt-2 font-display text-xl text-foreground">El modelo tradicional</h3>
+            <ul className="mt-6 space-y-3">
+              {comparison.others.map((item) => (
+                <li key={item} className="flex items-start gap-3 text-sm text-muted-foreground">
+                  <X size={16} className="mt-0.5 text-muted-foreground shrink-0" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="rounded-xl border border-gold/40 bg-background p-7 shadow-[var(--shadow-elegant)]">
+            <div className="text-[10px] uppercase tracking-widest text-gold">Profe Estoico</div>
+            <h3 className="mt-2 font-display text-xl text-foreground">Un método vivo</h3>
+            <ul className="mt-6 space-y-3">
+              {comparison.ours.map((item) => (
+                <li key={item} className="flex items-start gap-3 text-sm text-foreground/90">
+                  <Check size={16} className="mt-0.5 text-gold shrink-0" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </section>
 
@@ -114,7 +251,12 @@ function LandingPage() {
       <section id="etica" className="bg-secondary/50 border-y border-border/60">
         <div className="container-page py-20 md:py-28 grid md:grid-cols-12 gap-10">
           <div className="md:col-span-5">
-            <span className="gold-rule" />
+            <span className="inline-flex items-center gap-2 rounded-full border border-gold/40 bg-gold/10 px-3 py-1 text-[10px] uppercase tracking-widest text-gold-foreground">
+              <span className="h-1.5 w-1.5 rounded-full bg-gold" /> IA Responsable
+            </span>
+            <div className="mt-4">
+              <span className="gold-rule" />
+            </div>
             <p className="mt-4 text-xs uppercase tracking-[0.25em] text-muted-foreground">
               Compromiso ético
             </p>
@@ -124,7 +266,8 @@ function LandingPage() {
           </div>
           <div className="md:col-span-7 space-y-5 text-[15px] leading-relaxed text-foreground/85">
             <p>
-              El Asistente Profe Estoico fue diseñado para <strong>acompañar el proceso de reflexión docente</strong>.
+              El Asistente Profe Estoico fue diseñado para{" "}
+              <strong>acompañar el proceso de reflexión docente</strong>.
             </p>
             <ul className="space-y-3">
               {[
@@ -139,38 +282,36 @@ function LandingPage() {
               ))}
             </ul>
             <p>
-              Su propósito es <em>ayudar a organizar ideas, fortalecer la reflexión, mejorar la redacción y
-              comprender los criterios oficiales</em>, respetando siempre la autoría profesional del docente.
+              Su propósito es{" "}
+              <em>
+                ayudar a organizar ideas, fortalecer la reflexión, mejorar la redacción y
+                comprender los criterios oficiales
+              </em>
+              , respetando siempre la autoría profesional del docente.
             </p>
           </div>
         </div>
       </section>
 
-      {/* TESTIMONIOS placeholder */}
-      <section className="container-page py-20 md:py-28">
-        <div className="max-w-2xl">
-          <span className="gold-rule" />
-          <h2 className="mt-4 font-display text-3xl md:text-4xl">Voces docentes</h2>
-          <p className="mt-3 text-muted-foreground">
-            Pronto compartiremos aquí testimonios reales de docentes que forman parte del ecosistema.
+      {/* BETA */}
+      <section id="beta" className="container-page py-20 md:py-28">
+        <div className="max-w-3xl mx-auto text-center">
+          <span className="inline-flex items-center gap-2 rounded-full border border-border bg-secondary px-3 py-1 text-[10px] uppercase tracking-widest text-muted-foreground">
+            Primera generación Beta
+          </span>
+          <h2 className="mt-6 font-display text-3xl md:text-5xl text-foreground">
+            Construyendo junto a los primeros docentes.
+          </h2>
+          <p className="mt-5 text-muted-foreground leading-relaxed">
+            Estamos trabajando junto a los primeros docentes que utilizarán Profe Estoico durante
+            la Evaluación Docente 2026. Sus experiencias ayudarán a construir la plataforma
+            educativa más robusta del país.
           </p>
-        </div>
-        <div className="mt-12 grid gap-6 md:grid-cols-3">
-          {[1, 2, 3].map((i) => (
-            <blockquote key={i} className="card-elegant">
-              <div className="text-gold font-display text-3xl leading-none">"</div>
-              <p className="mt-3 text-sm text-muted-foreground italic">
-                Testimonio próximamente. Estamos escuchando a la primera generación de la comunidad.
-              </p>
-              <footer className="mt-6 flex items-center gap-3">
-                <div className="h-9 w-9 rounded-full bg-muted" />
-                <div className="text-xs">
-                  <div className="text-foreground">Docente {i}</div>
-                  <div className="text-muted-foreground">Región de Chile</div>
-                </div>
-              </footer>
-            </blockquote>
-          ))}
+          <div className="mt-8 flex justify-center">
+            <Link to="/auth" search={{ tab: "signup" }} className="btn-primary">
+              Quiero ser Beta Tester
+            </Link>
+          </div>
         </div>
       </section>
 
