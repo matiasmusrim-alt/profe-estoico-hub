@@ -1,7 +1,7 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
-import { DEMO_URL, PAYMENT_URL } from "@/lib/config";
+import { COPILOT_URL, DEMO_URL, PAYMENT_URL } from "@/lib/config";
 import {
   MessageCircleQuestion,
   ListTree,
@@ -16,6 +16,7 @@ import {
   Check,
   Rocket,
   Star,
+  KeyRound,
 } from "lucide-react";
 
 export const Route = createFileRoute("/")({
@@ -76,7 +77,7 @@ const faqs = [
   },
   {
     q: "¿Cómo obtengo acceso?",
-    a: "Solicítalo desde el botón principal. Revisamos cada solicitud con calma para mantener una comunidad profesional y comprometida.",
+    a: "Puedes probar la Demo gratuita o adquirir el acceso Premium. Tras la compra recibes tu licencia y la validación ocurre directamente dentro del Copilot: solo pulsa \"Ya tengo licencia\" para continuar.",
   },
 ];
 
@@ -106,7 +107,6 @@ function LandingPage() {
               Copilot especializado que respeta completamente tu autoría profesional.
             </p>
             <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
-              <Link to="/auth" className="btn-primary">Ingresar al Portal</Link>
               <a href={DEMO_URL} target="_blank" rel="noreferrer" className="btn-primary">
                 <Rocket size={18} strokeWidth={1.6} />
                 Probar Demo
@@ -114,6 +114,10 @@ function LandingPage() {
               <a href={PAYMENT_URL} target="_blank" rel="noreferrer" className="btn-secondary">
                 <Star size={18} strokeWidth={1.6} />
                 Comprar Acceso Premium
+              </a>
+              <a href={COPILOT_URL} target="_blank" rel="noreferrer" className="btn-secondary">
+                <KeyRound size={18} strokeWidth={1.6} />
+                Ya tengo licencia
               </a>
             </div>
             <p className="mt-6 text-xs text-muted-foreground">
@@ -188,8 +192,8 @@ function LandingPage() {
               "Prueba gratuitamente el Copilot.",
               "Explora su metodología mediante la versión Demo.",
               "Si deseas continuar, adquiere tu acceso Premium.",
-              "Recibe tus credenciales automáticamente.",
-              "Continúa trabajando exactamente con el mismo Mentor IA.",
+              "Recibe tu licencia automáticamente por correo.",
+              "Vuelve con el botón \"Ya tengo licencia\" y continúa con el mismo Mentor IA.",
             ].map((step, i, arr) => {
               const isLast = i === arr.length - 1;
               return (
@@ -246,6 +250,10 @@ function LandingPage() {
               <a href={PAYMENT_URL} target="_blank" rel="noreferrer" className="btn-primary">
                 <Star size={18} strokeWidth={1.6} />
                 Comprar Acceso Premium
+              </a>
+              <a href={COPILOT_URL} target="_blank" rel="noreferrer" className="btn-secondary">
+                <KeyRound size={18} strokeWidth={1.6} />
+                Ya tengo licencia
               </a>
             </div>
           </div>
@@ -445,9 +453,9 @@ function LandingPage() {
             educativa más robusta del país.
           </p>
           <div className="mt-8 flex justify-center">
-            <Link to="/auth" search={{ tab: "signup" }} className="btn-primary">
-              Quiero ser Beta Tester
-            </Link>
+            <a href={DEMO_URL} target="_blank" rel="noreferrer" className="btn-primary">
+              Probar la Demo
+            </a>
           </div>
         </div>
       </section>
