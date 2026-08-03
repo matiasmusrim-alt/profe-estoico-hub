@@ -246,7 +246,7 @@ function LandingPage() {
               ))}
             </ul>
 
-            <div className="mt-8">
+            <div className="mt-8 flex flex-wrap gap-3">
               <a href={PAYMENT_URL} target="_blank" rel="noreferrer" className="btn-primary">
                 <Star size={18} strokeWidth={1.6} />
                 Comprar Acceso Premium
@@ -256,6 +256,7 @@ function LandingPage() {
                 Ya tengo licencia
               </a>
             </div>
+
           </div>
         </div>
       </section>
