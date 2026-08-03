@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
+import { DEMO_URL, PAYMENT_URL } from "@/lib/config";
 import {
   MessageCircleQuestion,
   ListTree,
@@ -13,6 +14,8 @@ import {
   Clock,
   X,
   Check,
+  Rocket,
+  Star,
 } from "lucide-react";
 
 export const Route = createFileRoute("/")({
@@ -104,13 +107,147 @@ function LandingPage() {
             </p>
             <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
               <Link to="/auth" className="btn-primary">Ingresar al Portal</Link>
-              <Link to="/auth" search={{ tab: "signup" }} className="btn-secondary">
-                Solicitar acceso Beta
-              </Link>
+              <a href={DEMO_URL} target="_blank" rel="noreferrer" className="btn-primary">
+                <Rocket size={18} strokeWidth={1.6} />
+                Probar Demo
+              </a>
+              <a href={PAYMENT_URL} target="_blank" rel="noreferrer" className="btn-secondary">
+                <Star size={18} strokeWidth={1.6} />
+                Comprar Acceso Premium
+              </a>
             </div>
             <p className="mt-6 text-xs text-muted-foreground">
               Pensada para docentes chilenos · IA ética · Desarrollo continuo
             </p>
+          </div>
+        </div>
+      </section>
+
+      {/* ¿CÓMO QUIERES COMENZAR? */}
+      <section className="container-page py-20 md:py-28">
+        <div className="max-w-2xl mx-auto text-center">
+          <span className="gold-rule" />
+          <h2 className="mt-4 font-display text-3xl md:text-5xl">¿Cómo quieres comenzar?</h2>
+          <p className="mt-4 text-muted-foreground">
+            Elige el camino que mejor se ajuste a tu momento profesional.
+          </p>
+        </div>
+
+        <div className="mt-14 grid gap-6 md:grid-cols-2 max-w-4xl mx-auto">
+          <article className="card-elegant relative">
+            <span className="absolute top-4 right-4 inline-flex items-center gap-1 rounded-full border border-gold/40 bg-gold/10 px-2 py-0.5 text-[10px] uppercase tracking-widest text-gold-foreground">
+              <span className="h-1.5 w-1.5 rounded-full bg-gold" /> Gratuito
+            </span>
+            <div className="inline-flex h-12 w-12 items-center justify-center rounded-md bg-primary/5 text-primary border border-border mb-4">
+              <Rocket size={24} strokeWidth={1.6} />
+            </div>
+            <h3 className="font-display text-2xl text-foreground">Demo Gratuita</h3>
+            <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
+              Conoce cómo trabaja Profe Estoico. Podrás utilizar el Mentor de Evaluación Docente durante una cantidad limitada de interacciones para experimentar su metodología y comprobar cómo fortalece tu reflexión profesional.
+            </p>
+            <div className="mt-6">
+              <a href={DEMO_URL} target="_blank" rel="noreferrer" className="btn-primary w-full">
+                Probar Demo
+              </a>
+            </div>
+          </article>
+
+          <article className="card-elegant relative">
+            <span className="absolute top-4 right-4 inline-flex items-center gap-1 rounded-full border border-gold/40 bg-gold/10 px-2 py-0.5 text-[10px] uppercase tracking-widest text-gold-foreground">
+              <span className="h-1.5 w-1.5 rounded-full bg-gold" /> Premium
+            </span>
+            <div className="inline-flex h-12 w-12 items-center justify-center rounded-md bg-primary/5 text-primary border border-border mb-4">
+              <Star size={24} strokeWidth={1.6} />
+            </div>
+            <h3 className="font-display text-2xl text-foreground">Premium</h3>
+            <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
+              Accede sin restricciones al Mentor de Evaluación Docente y a todos los módulos que se incorporarán progresivamente dentro del ecosistema Profe Estoico.
+            </p>
+            <div className="mt-6">
+              <a href={PAYMENT_URL} target="_blank" rel="noreferrer" className="btn-primary w-full">
+                Comprar Acceso
+              </a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      {/* ¿CÓMO FUNCIONA? */}
+      <section id="como-funciona" className="bg-secondary/50 border-y border-border/60">
+        <div className="container-page py-20 md:py-28">
+          <div className="max-w-2xl mx-auto text-center">
+            <span className="gold-rule" />
+            <h2 className="mt-4 font-display text-3xl md:text-5xl">¿Cómo funciona?</h2>
+            <p className="mt-4 text-muted-foreground">
+              Un camino claro para comenzar a trabajar con tu Mentor IA.
+            </p>
+          </div>
+
+          <ol className="mt-14 max-w-2xl mx-auto space-y-6">
+            {[
+              "Prueba gratuitamente el Copilot.",
+              "Explora su metodología mediante la versión Demo.",
+              "Si deseas continuar, adquiere tu acceso Premium.",
+              "Recibe tus credenciales automáticamente.",
+              "Continúa trabajando exactamente con el mismo Mentor IA.",
+            ].map((step, i, arr) => {
+              const isLast = i === arr.length - 1;
+              return (
+                <li key={step} className="relative">
+                  <div className="card-elegant flex flex-col items-center text-center">
+                    <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-primary text-primary-foreground font-display text-lg mb-3">
+                      {i + 1}
+                    </span>
+                    <p className="font-display text-lg text-foreground">{step}</p>
+                  </div>
+                  {!isLast && (
+                    <div aria-hidden className="flex justify-center py-3">
+                      <span className="h-6 w-px bg-border" />
+                    </div>
+                  )}
+                </li>
+              );
+            })}
+          </ol>
+        </div>
+      </section>
+
+      {/* PREMIUM */}
+      <section id="premium" className="container-page py-20 md:py-28">
+        <div className="max-w-2xl mx-auto">
+          <div className="card-elegant border-gold/40">
+            <span className="inline-flex items-center gap-2 rounded-full border border-gold/40 bg-gold/10 px-3 py-1 text-[10px] uppercase tracking-widest text-gold-foreground">
+              <span className="h-1.5 w-1.5 rounded-full bg-gold" /> Acceso Premium
+            </span>
+            <div className="mt-4">
+              <span className="gold-rule" />
+            </div>
+            <h2 className="mt-4 font-display text-2xl md:text-3xl text-foreground">
+              ¿Qué incluye el acceso Premium?
+            </h2>
+
+            <ul className="mt-6 grid gap-3 sm:grid-cols-2">
+              {[
+                "Acceso completo al Mentor Evaluación Docente",
+                "Actualizaciones permanentes",
+                "Acceso a nuevos módulos",
+                "Biblioteca Docente",
+                "Comunidad",
+                "Simulador ECEP (cuando sea publicado)",
+              ].map((item) => (
+                <li key={item} className="flex items-start gap-3 text-sm text-foreground/90">
+                  <Check size={16} className="mt-0.5 text-gold shrink-0" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+
+            <div className="mt-8">
+              <a href={PAYMENT_URL} target="_blank" rel="noreferrer" className="btn-primary">
+                <Star size={18} strokeWidth={1.6} />
+                Comprar Acceso Premium
+              </a>
+            </div>
           </div>
         </div>
       </section>

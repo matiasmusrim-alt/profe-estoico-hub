@@ -11,6 +11,18 @@ export const COPILOT_URL: string =
   (import.meta.env.VITE_COPILOT_URL as string | undefined) ??
   "https://chat.openai.com/";
 
+// URL de la Demo gratuita del Copilot. Se reemplazará cuando esté disponible.
+// Puede sobrescribirse mediante la variable de entorno VITE_DEMO_URL.
+export const DEMO_URL: string =
+  (import.meta.env.VITE_DEMO_URL as string | undefined) ??
+  "https://chat.openai.com/";
+
+// URL de compra de acceso Premium. Se reemplazará cuando esté disponible.
+// Puede sobrescribirse mediante la variable de entorno VITE_PAYMENT_URL.
+export const PAYMENT_URL: string =
+  (import.meta.env.VITE_PAYMENT_URL as string | undefined) ??
+  "https://lemonsqueezy.com/";
+
 export type ModuleStatus = "available" | "coming-soon";
 
 export interface PortalModule {
