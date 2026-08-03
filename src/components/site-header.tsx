@@ -1,18 +1,7 @@
 import { Link } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
-import { supabase } from "@/integrations/supabase/client";
-import type { Session } from "@supabase/supabase-js";
-import { APP_NAME } from "@/lib/config";
+import { APP_NAME, COPILOT_URL, PAYMENT_URL } from "@/lib/config";
 
 export function SiteHeader() {
-  const [session, setSession] = useState<Session | null>(null);
-
-  useEffect(() => {
-    supabase.auth.getSession().then(({ data }) => setSession(data.session));
-    const { data: sub } = supabase.auth.onAuthStateChange((_e, s) => setSession(s));
-    return () => sub.subscription.unsubscribe();
-  }, []);
-
   return (
     <header className="sticky top-0 z-40 border-b border-border/60 bg-background/80 backdrop-blur-md">
       <div className="container-page flex h-16 items-center justify-between">
@@ -29,8 +18,8 @@ export function SiteHeader() {
         </Link>
 
         <nav className="hidden md:flex items-center gap-8 text-sm text-muted-foreground">
-          <a href="/#beneficios" className="hover:text-foreground transition-colors">
-            Beneficios
+          <a href="/#como-funciona" className="hover:text-foreground transition-colors">
+            Cómo funciona
           </a>
           <a href="/#etica" className="hover:text-foreground transition-colors">
             Compromiso ético
@@ -41,23 +30,22 @@ export function SiteHeader() {
         </nav>
 
         <div className="flex items-center gap-3">
-          {session ? (
-            <Link to="/portal" className="btn-primary text-sm py-2 px-4">
-              Ir al portal
-            </Link>
-          ) : (
-            <>
-              <Link
-                to="/auth"
-                className="hidden sm:inline-flex text-sm text-muted-foreground hover:text-foreground transition-colors"
-              >
-                Ingresar
-              </Link>
-              <Link to="/auth" search={{ tab: "signup" }} className="btn-primary text-sm py-2 px-4">
-                Solicitar acceso
-              </Link>
-            </>
-          )}
+          <a
+            href={COPILOT_URL}
+            target="_blank"
+            rel="noreferrer"
+            className="hidden sm:inline-flex text-sm text-muted-foreground hover:text-foreground transition-colors"
+          >
+            Ya tengo licencia
+          </a>
+          <a
+            href={PAYMENT_URL}
+            target="_blank"
+            rel="noreferrer"
+            className="btn-primary text-sm py-2 px-4"
+          >
+            Comprar acceso
+          </a>
         </div>
       </div>
     </header>

@@ -1,4 +1,4 @@
-import { APP_NAME } from "@/lib/config";
+import { APP_NAME, COPILOT_URL, DEMO_URL, PAYMENT_URL } from "@/lib/config";
 
 export function SiteFooter() {
   return (
@@ -19,7 +19,7 @@ export function SiteFooter() {
         <div className="text-sm">
           <h4 className="font-display text-foreground mb-3">Plataforma</h4>
           <ul className="space-y-2 text-muted-foreground">
-            <li><a href="/#beneficios" className="hover:text-foreground">Beneficios</a></li>
+            <li><a href="/#como-funciona" className="hover:text-foreground">Cómo funciona</a></li>
             <li><a href="/#etica" className="hover:text-foreground">Compromiso ético</a></li>
             <li><a href="/#faq" className="hover:text-foreground">Preguntas frecuentes</a></li>
           </ul>
@@ -27,8 +27,21 @@ export function SiteFooter() {
         <div className="text-sm">
           <h4 className="font-display text-foreground mb-3">Acceso</h4>
           <ul className="space-y-2 text-muted-foreground">
-            <li><a href="/auth" className="hover:text-foreground">Ingresar</a></li>
-            <li><a href="/auth" className="hover:text-foreground">Solicitar acceso</a></li>
+            <li>
+              <a href={DEMO_URL} target="_blank" rel="noreferrer" className="hover:text-foreground">
+                Probar Demo
+              </a>
+            </li>
+            <li>
+              <a href={PAYMENT_URL} target="_blank" rel="noreferrer" className="hover:text-foreground">
+                Comprar Acceso Premium
+              </a>
+            </li>
+            <li>
+              <a href={COPILOT_URL} target="_blank" rel="noreferrer" className="hover:text-foreground">
+                Ya tengo licencia
+              </a>
+            </li>
           </ul>
         </div>
       </div>
