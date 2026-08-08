@@ -127,57 +127,11 @@ function LandingPage() {
         </div>
       </section>
 
-      {/* ¿CÓMO QUIERES COMENZAR? */}
-      <section className="container-page py-20 md:py-28">
-        <div className="max-w-2xl mx-auto text-center">
-          <span className="gold-rule" />
-          <h2 className="mt-4 font-display text-3xl md:text-5xl">¿Cómo quieres comenzar?</h2>
-          <p className="mt-4 text-muted-foreground">
-            Elige el camino que mejor se ajuste a tu momento profesional.
-          </p>
-        </div>
-
-        <div className="mt-14 grid gap-6 md:grid-cols-2 max-w-4xl mx-auto">
-          <article className="card-elegant relative">
-            <span className="absolute top-4 right-4 inline-flex items-center gap-1 rounded-full border border-gold/40 bg-gold/10 px-2 py-0.5 text-[10px] uppercase tracking-widest text-gold-foreground">
-              <span className="h-1.5 w-1.5 rounded-full bg-gold" /> Gratuito
-            </span>
-            <div className="inline-flex h-12 w-12 items-center justify-center rounded-md bg-primary/5 text-primary border border-border mb-4">
-              <Rocket size={24} strokeWidth={1.6} />
-            </div>
-            <h3 className="font-display text-2xl text-foreground">Demo Gratuita</h3>
-            <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
-              Conoce cómo trabaja Profe Estoico. Podrás utilizar el Mentor de Evaluación Docente durante una cantidad limitada de interacciones para experimentar su metodología y comprobar cómo fortalece tu reflexión profesional.
-            </p>
-            <div className="mt-6">
-              <a href={DEMO_URL} target="_blank" rel="noreferrer" className="btn-primary w-full">
-                Probar Demo
-              </a>
-            </div>
-          </article>
-
-          <article className="card-elegant relative">
-            <span className="absolute top-4 right-4 inline-flex items-center gap-1 rounded-full border border-gold/40 bg-gold/10 px-2 py-0.5 text-[10px] uppercase tracking-widest text-gold-foreground">
-              <span className="h-1.5 w-1.5 rounded-full bg-gold" /> Premium
-            </span>
-            <div className="inline-flex h-12 w-12 items-center justify-center rounded-md bg-primary/5 text-primary border border-border mb-4">
-              <Star size={24} strokeWidth={1.6} />
-            </div>
-            <h3 className="font-display text-2xl text-foreground">Premium</h3>
-            <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
-              Accede sin restricciones al Mentor de Evaluación Docente y a todos los módulos que se incorporarán progresivamente dentro del ecosistema Profe Estoico.
-            </p>
-            <div className="mt-6">
-              <a href={PAYMENT_URL} target="_blank" rel="noreferrer" className="btn-primary w-full">
-                Comprar Acceso
-              </a>
-            </div>
-          </article>
-        </div>
-      </section>
-
       {/* ¿CÓMO FUNCIONA? */}
+
+
       <section id="como-funciona" className="bg-secondary/50 border-y border-border/60">
+
         <div className="container-page py-20 md:py-28">
           <div className="max-w-2xl mx-auto text-center">
             <span className="gold-rule" />
@@ -245,17 +199,6 @@ function LandingPage() {
                 </li>
               ))}
             </ul>
-
-            <div className="mt-8 flex flex-wrap gap-3">
-              <a href={PAYMENT_URL} target="_blank" rel="noreferrer" className="btn-primary">
-                <Star size={18} strokeWidth={1.6} />
-                Comprar Acceso Premium
-              </a>
-              <a href={COPILOT_URL} target="_blank" rel="noreferrer" className="btn-secondary">
-                <KeyRound size={18} strokeWidth={1.6} />
-                Ya tengo licencia
-              </a>
-            </div>
 
           </div>
         </div>
@@ -453,11 +396,8 @@ function LandingPage() {
             la Evaluación Docente 2026. Sus experiencias ayudarán a construir la plataforma
             educativa más robusta del país.
           </p>
-          <div className="mt-8 flex justify-center">
-            <a href={DEMO_URL} target="_blank" rel="noreferrer" className="btn-primary">
-              Probar la Demo
-            </a>
-          </div>
+
+
         </div>
       </section>
 
