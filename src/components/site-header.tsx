@@ -31,22 +31,13 @@ export function SiteHeader() {
 
         <div className="flex items-center gap-3">
           <a
-            href={COPILOT_URL}
-            target="_blank"
-            rel="noreferrer"
+            href="/#premium"
             className="hidden sm:inline-flex text-sm text-muted-foreground hover:text-foreground transition-colors"
           >
-            Ya tengo licencia
-          </a>
-          <a
-            href={PAYMENT_URL}
-            target="_blank"
-            rel="noreferrer"
-            className="btn-primary text-sm py-2 px-4"
-          >
-            Comprar acceso
+            Acceso Premium
           </a>
         </div>
+
       </div>
     </header>
   );
