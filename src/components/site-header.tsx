@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { APP_NAME, COPILOT_URL, PAYMENT_URL } from "@/lib/config";
+import { APP_NAME } from "@/lib/config";
 
 export function SiteHeader() {
   return (
