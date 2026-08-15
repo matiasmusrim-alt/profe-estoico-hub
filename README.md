@@ -232,3 +232,12 @@ cd <repository-name>
 npm i
 npm run dev
 ```
+
+## Configuración de fase 1
+
+1. Copia `.env.example` a `.env.local` y completa los valores en el entorno de despliegue. Nunca expongas `SUPABASE_SERVICE_ROLE_KEY` ni `OPENAI_API_KEY` con el prefijo `VITE_`.
+2. Aplica, en orden, las migraciones de `supabase/migrations` al proyecto Supabase.
+3. En Supabase Auth habilita correo/contraseña, confirmación de correo y registra las URL de redirección `/auth/callback` y `/nueva-clave` para producción y desarrollo.
+4. Configura la clave OpenAI solo en el runtime del servidor. `OPENAI_MODEL` es opcional y usa `gpt-5-mini` por defecto.
+
+La cuota demo es de 10 mensajes por usuario. Se consume atómicamente en PostgreSQL desde el servidor y se reembolsa si OpenAI falla. Las rutas privadas verifican la sesión y las operaciones sensibles vuelven a verificar el JWT en el servidor.
