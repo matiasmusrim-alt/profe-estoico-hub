@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
-import { CONTACT_URL, COPILOT_URL, PAYMENT_URL } from "@/lib/config";
+import { CONTACT_URL, PAYMENT_URL } from "@/lib/config";
 import {
   MessageCircleQuestion,
   ListTree,
@@ -15,7 +15,6 @@ import {
   X,
   Check,
   Star,
-  KeyRound,
 } from "lucide-react";
 
 export const Route = createFileRoute("/")({
@@ -114,10 +113,6 @@ function LandingPage() {
                 <Star size={18} strokeWidth={1.6} />
                 Comprar Acceso Premium
               </a>
-              <a href={COPILOT_URL} target="_blank" rel="noreferrer" className="btn-secondary">
-                <KeyRound size={18} strokeWidth={1.6} />
-                Ya tengo licencia
-              </a>
             </div>
             <p className="mt-6 text-xs text-muted-foreground">
               Pensada para docentes chilenos · IA ética · Desarrollo continuo
@@ -146,7 +141,7 @@ function LandingPage() {
               "Conoce cómo funciona el Mentor Evaluación Docente.",
               "Si deseas comenzar, adquiere tu acceso Premium.",
               "Recibe tu licencia automáticamente por correo.",
-              "Vuelve con el botón \"Ya tengo licencia\" y continúa con el mismo Mentor IA.",
+              "Recibe por correo el enlace al GPT Premium después de tu compra.",
             ].map((step, i, arr) => {
               const isLast = i === arr.length - 1;
               return (

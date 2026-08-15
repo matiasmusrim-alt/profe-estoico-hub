@@ -5,11 +5,11 @@
 export const APP_NAME = "Profe Estoico";
 export const APP_TAGLINE = "Plataforma Inteligente para el Desarrollo Profesional Docente";
 
-// URL del Copilot (GPT personalizado). Se reemplazará cuando esté disponible.
+// URL del GPT Premium original. Puede sobrescribirse mediante VITE_COPILOT_URL.
 // Puede sobrescribirse mediante la variable de entorno VITE_COPILOT_URL.
 export const COPILOT_URL: string =
   (import.meta.env.VITE_COPILOT_URL as string | undefined) ??
-  "/portal";
+  "https://chatgpt.com/g/g-6a44081ca1f4819198eb7a3e49275ce8-mentor-docente-2026";
 
 // URL de la Demo gratuita del Copilot. Se reemplazará cuando esté disponible.
 // Puede sobrescribirse mediante la variable de entorno VITE_DEMO_URL.
