@@ -116,7 +116,7 @@ function LandingPage() {
               </a>
               <a href={COPILOT_URL} target="_blank" rel="noreferrer" className="btn-secondary">
                 <KeyRound size={18} strokeWidth={1.6} />
-                Ya tengo licencia
+                Acceder al GPT Premium
               </a>
             </div>
             <p className="mt-6 text-xs text-muted-foreground">
@@ -146,7 +146,7 @@ function LandingPage() {
               "Conoce cómo funciona el Mentor Evaluación Docente.",
               "Si deseas comenzar, adquiere tu acceso Premium.",
               "Recibe tu licencia automáticamente por correo.",
-              "Vuelve con el botón \"Ya tengo licencia\" y continúa con el mismo Mentor IA.",
+              "Accede al GPT Premium y continúa con el mismo Mentor IA.",
             ].map((step, i, arr) => {
               const isLast = i === arr.length - 1;
               return (

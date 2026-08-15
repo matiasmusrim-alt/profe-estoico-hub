@@ -39,7 +39,7 @@ export function SiteFooter() {
             </li>
             <li>
               <a href={COPILOT_URL} target="_blank" rel="noreferrer" className="hover:text-foreground">
-                Ya tengo licencia
+                Acceder al GPT Premium
               </a>
             </li>
           </ul>
