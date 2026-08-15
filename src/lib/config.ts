@@ -17,6 +17,11 @@ export const DEMO_URL: string =
   (import.meta.env.VITE_DEMO_URL as string | undefined) ??
   "/auth?mode=demo";
 
+// Contacto para consultas sobre el acceso mientras la Demo permanece pausada.
+export const CONTACT_URL: string =
+  (import.meta.env.VITE_CONTACT_URL as string | undefined) ??
+  "https://wa.me/56944292644";
+
 // URL de compra de acceso Premium. Se reemplazará cuando esté disponible.
 // Puede sobrescribirse mediante la variable de entorno VITE_PAYMENT_URL.
 export const PAYMENT_URL: string =

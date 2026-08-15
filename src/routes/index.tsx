@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
-import { COPILOT_URL, DEMO_URL, PAYMENT_URL } from "@/lib/config";
+import { CONTACT_URL, COPILOT_URL, PAYMENT_URL } from "@/lib/config";
 import {
   MessageCircleQuestion,
   ListTree,
@@ -14,7 +14,6 @@ import {
   Clock,
   X,
   Check,
-  Rocket,
   Star,
   KeyRound,
 } from "lucide-react";
@@ -77,7 +76,7 @@ const faqs = [
   },
   {
     q: "¿Cómo obtengo acceso?",
-    a: "Puedes probar la Demo gratuita o adquirir el acceso Premium. Tras la compra recibes tu licencia y la validación ocurre directamente dentro del Copilot: solo pulsa \"Ya tengo licencia\" para continuar.",
+    a: "La versión Demo está temporalmente pausada. Para conocer el acceso Premium, puedes solicitar información al creador. Tras la compra recibes tu licencia y la validación ocurre directamente dentro del Copilot.",
   },
 ];
 
@@ -107,9 +106,9 @@ function LandingPage() {
               Copilot especializado que respeta completamente tu autoría profesional.
             </p>
             <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
-              <a href={DEMO_URL} target="_blank" rel="noreferrer" className="btn-primary">
-                <Rocket size={18} strokeWidth={1.6} />
-                Probar Demo
+              <a href={CONTACT_URL} target="_blank" rel="noreferrer" className="btn-primary">
+                <MessageCircleQuestion size={18} strokeWidth={1.6} />
+                Solicitar información
               </a>
               <a href={PAYMENT_URL} target="_blank" rel="noreferrer" className="btn-secondary">
                 <Star size={18} strokeWidth={1.6} />
@@ -143,9 +142,9 @@ function LandingPage() {
 
           <ol className="mt-14 max-w-2xl mx-auto space-y-6">
             {[
-              "Prueba gratuitamente el Copilot.",
-              "Explora su metodología mediante la versión Demo.",
-              "Si deseas continuar, adquiere tu acceso Premium.",
+              "Solicita información sobre el acceso al Copilot.",
+              "Conoce cómo funciona el Mentor Evaluación Docente.",
+              "Si deseas comenzar, adquiere tu acceso Premium.",
               "Recibe tu licencia automáticamente por correo.",
               "Vuelve con el botón \"Ya tengo licencia\" y continúa con el mismo Mentor IA.",
             ].map((step, i, arr) => {

@@ -1,4 +1,4 @@
-import { APP_NAME, COPILOT_URL, DEMO_URL, PAYMENT_URL } from "@/lib/config";
+import { APP_NAME, CONTACT_URL, COPILOT_URL, PAYMENT_URL } from "@/lib/config";
 
 export function SiteFooter() {
   return (
@@ -28,8 +28,8 @@ export function SiteFooter() {
           <h4 className="font-display text-foreground mb-3">Acceso</h4>
           <ul className="space-y-2 text-muted-foreground">
             <li>
-              <a href={DEMO_URL} target="_blank" rel="noreferrer" className="hover:text-foreground">
-                Probar Demo
+              <a href={CONTACT_URL} target="_blank" rel="noreferrer" className="hover:text-foreground">
+                Solicitar información
               </a>
             </li>
             <li>
