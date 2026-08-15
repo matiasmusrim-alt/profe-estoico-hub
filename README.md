@@ -10,11 +10,9 @@ La plataforma debe diseñarse como un SaaS moderno, escalable y modular.
 
 Su objetivo es convertirse en el lugar donde un docente gestione toda su preparación para la Evaluación Docente y, posteriormente, otros procesos profesionales.
 
-Esta primera versión NO debe integrar todavía inteligencia artificial propia ni la API de OpenAI.
+La primera fase funcional incluye autenticación, portal privado, una demo de 10 respuestas y un mentor servido desde el backend con la API propia de OpenAI.
 
-El Copilot ya existe como un GPT personalizado y, por ahora, la plataforma solamente actuará como el portal oficial de acceso.
-
-Toda la arquitectura debe quedar preparada para integrar posteriormente ese Copilot sin reconstruir la aplicación.
+La plataforma conserva la landing existente y mantiene preparada la arquitectura para incorporar pagos, documentos oficiales y nuevos módulos sin reconstruir la aplicación.
 
 ──────────────────────────
 
@@ -198,17 +196,7 @@ Próximamente
 
 IMPORTANTE
 
-No desarrollar todavía:
-
-API OpenAI
-
-Chatbot
-
-Simulador
-
-Cursos
-
-Solo dejar la arquitectura preparada para crecer durante los próximos años.
+Esta fase no incluye todavía los webhooks del proveedor de pagos, la carga de documentos oficiales ni los módulos Biblioteca, Simulador, Cursos o Comunidad.
 
 Quiero un código limpio, profesional y escalable.
 
@@ -232,3 +220,13 @@ cd <repository-name>
 npm i
 npm run dev
 ```
+
+## Configuración de fase 1
+
+1. Copia `.env.example` a `.env.local` y completa los valores en el entorno de despliegue. Nunca expongas `SUPABASE_SERVICE_ROLE_KEY` ni `OPENAI_API_KEY` con el prefijo `VITE_`.
+2. Aplica, en orden, las migraciones de `supabase/migrations` al proyecto Supabase.
+3. En Supabase Auth habilita correo/contraseña, confirmación de correo y registra las URL de redirección `/auth/callback` y `/nueva-clave` para producción y desarrollo.
+4. Configura la clave OpenAI solo en el runtime del servidor. `OPENAI_MODEL` es opcional y usa `gpt-5-mini` por defecto.
+5. Configura `VITE_PAYMENT_URL` con el enlace real de pago cuando Lemon Squeezy u otro proveedor haya validado la cuenta. El precio de referencia es $39.990 CLP.
+
+La cuota demo es de 10 mensajes por usuario. Se consume atómicamente en PostgreSQL desde el servidor y se reembolsa si OpenAI falla. Las rutas privadas verifican la sesión y las operaciones sensibles vuelven a verificar el JWT en el servidor.

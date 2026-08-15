@@ -1,0 +1,17 @@
+import { createFileRoute, useNavigate } from "@tanstack/react-router";
+import { useEffect } from "react";
+import { supabase } from "@/integrations/supabase/client";
+export const Route = createFileRoute("/auth/callback")({ component: Callback });
+function Callback() {
+  const navigate = useNavigate();
+  useEffect(() => {
+    supabase.auth
+      .getSession()
+      .then(({ data }) => navigate({ to: data.session ? "/portal" : "/auth" }));
+  }, [navigate]);
+  return (
+    <main className="grid min-h-screen place-items-center">
+      <p>Validando acceso…</p>
+    </main>
+  );
+}
