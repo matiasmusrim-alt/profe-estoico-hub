@@ -1,4 +1,4 @@
-import { APP_NAME, CONTACT_URL, COPILOT_URL, PAYMENT_URL } from "@/lib/config";
+import { APP_NAME, CONTACT_URL, PAYMENT_URL } from "@/lib/config";
 
 export function SiteFooter() {
   return (
@@ -35,11 +35,6 @@ export function SiteFooter() {
             <li>
               <a href={PAYMENT_URL} target="_blank" rel="noreferrer" className="hover:text-foreground">
                 Comprar Acceso Premium
-              </a>
-            </li>
-            <li>
-              <a href={COPILOT_URL} target="_blank" rel="noreferrer" className="hover:text-foreground">
-                Acceder al GPT Premium
               </a>
             </li>
           </ul>
