@@ -1,6 +1,7 @@
 import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
 import { requireSupabaseAuth } from "@/integrations/supabase/auth-middleware";
+import { MENTOR_SYSTEM_PROMPT } from "@/lib/mentor-system-prompt";
 
 const messageSchema = z.object({ message: z.string().trim().min(3).max(4000) });
 
@@ -47,14 +48,27 @@ export const sendMentorMessage = createServerFn({ method: "POST" })
     }
 
     try {
+      const { data: previousMessages } = await supabaseAdmin
+        .from("mentor_messages")
+        .select("role,content")
+        .eq("user_id", userId)
+        .order("created_at", { ascending: false })
+        .limit(12);
+
+      const conversation = (previousMessages ?? [])
+        .reverse()
+        .map((item) => ({
+          role: item.role === "assistant" ? ("assistant" as const) : ("user" as const),
+          content: item.content,
+        }));
+
       const response = await fetch("https://api.openai.com/v1/responses", {
         method: "POST",
         headers: { Authorization: `Bearer ${apiKey}`, "Content-Type": "application/json" },
         body: JSON.stringify({
           model: process.env.OPENAI_MODEL ?? "gpt-5-mini",
-          instructions:
-            "Eres Profesor Estoico, mentor profesional para docentes chilenos. Ayuda a reflexionar, ordenar ideas y mejorar redacción. Nunca inventes experiencias ni evidencias, no suplantes el juicio docente y haz preguntas cuando falte contexto. Responde en español claro y respetuoso.",
-          input: data.message,
+          instructions: MENTOR_SYSTEM_PROMPT,
+          input: [...conversation, { role: "user", content: data.message }],
           max_output_tokens: 900,
         }),
       });

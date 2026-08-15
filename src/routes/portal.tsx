@@ -3,6 +3,7 @@ import { requireSession } from "@/lib/auth";
 import { PrivateShell } from "@/components/private-shell";
 import { Button } from "@/components/ui/button";
 import { BrainCircuit, BookOpen, ChartNoAxesColumn, GraduationCap, Users } from "lucide-react";
+import { PAYMENT_URL } from "@/lib/config";
 export const Route = createFileRoute("/portal")({
   ssr: false,
   beforeLoad: requireSession,
@@ -29,6 +30,14 @@ function Portal() {
         </p>
         <h1 className="mt-2 font-serif text-4xl text-primary">Bienvenido a Profe Estoico</h1>
         <p className="mt-3 text-muted-foreground">¿Qué deseas hacer hoy?</p>
+        <div className="mt-6 flex flex-wrap items-center gap-3 rounded-2xl border border-accent/40 bg-accent/10 p-4 text-sm">
+          <span className="flex-1 text-foreground">
+            La demo incluye 10 respuestas del mentor. El acceso Premium cuesta $39.990 CLP.
+          </span>
+          <a href={PAYMENT_URL} target="_blank" rel="noreferrer" className="rounded-md bg-primary px-4 py-2 font-medium text-primary-foreground">
+            Comprar Premium
+          </a>
+        </div>
         <div className="mt-9 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
           {modules.map(({ title, desc, icon: Icon, available }) => (
             <article key={title} className="rounded-2xl border bg-background p-6 shadow-sm">

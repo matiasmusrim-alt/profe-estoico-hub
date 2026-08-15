@@ -9,13 +9,13 @@ export const APP_TAGLINE = "Plataforma Inteligente para el Desarrollo Profesiona
 // Puede sobrescribirse mediante la variable de entorno VITE_COPILOT_URL.
 export const COPILOT_URL: string =
   (import.meta.env.VITE_COPILOT_URL as string | undefined) ??
-  "https://chat.openai.com/";
+  "/portal";
 
 // URL de la Demo gratuita del Copilot. Se reemplazará cuando esté disponible.
 // Puede sobrescribirse mediante la variable de entorno VITE_DEMO_URL.
 export const DEMO_URL: string =
   (import.meta.env.VITE_DEMO_URL as string | undefined) ??
-  "https://chat.openai.com/";
+  "/auth?mode=demo";
 
 // URL de compra de acceso Premium. Se reemplazará cuando esté disponible.
 // Puede sobrescribirse mediante la variable de entorno VITE_PAYMENT_URL.
