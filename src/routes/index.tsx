@@ -31,6 +31,51 @@ const flowSteps = [
   { icon: UserCheck, text: "Tú tomas siempre la decisión final." },
 ];
 
+const mentorCapabilities = [
+  {
+    number: "01",
+    icon: ListTree,
+    title: "Comprende lo que te están pidiendo",
+    description:
+      "Interpreta las instrucciones, indicadores y criterios de evaluación de cada tarea para ayudarte a identificar qué debes demostrar antes de comenzar a escribir.",
+  },
+  {
+    number: "02",
+    icon: MessageCircleQuestion,
+    title: "Construye desde tu propia experiencia",
+    description:
+      "El Copilot te realiza preguntas estratégicas para recuperar información de tu práctica real, organizarla y convertirla en insumos útiles para desarrollar tu portafolio.",
+  },
+  {
+    number: "03",
+    icon: BookMarked,
+    title: "Fortalece cada módulo",
+    description:
+      "Te acompaña en el desarrollo de las tareas del portafolio, ayudándote a estructurar respuestas, profundizar tu reflexión pedagógica y fundamentar tus decisiones profesionales.",
+  },
+  {
+    number: "04",
+    icon: ScanSearch,
+    title: "Analiza tus respuestas",
+    description:
+      "Revisa la coherencia entre lo que escribiste, la evidencia presentada y los criterios oficiales, identificando fortalezas y aspectos que todavía puedes desarrollar.",
+  },
+  {
+    number: "05",
+    icon: PenLine,
+    title: "Mejora tu redacción profesional",
+    description:
+      "Te ayuda a expresar tus ideas con mayor claridad, precisión y profundidad, manteniendo siempre tu experiencia, tu voz y tu autoría profesional.",
+  },
+  {
+    number: "06",
+    icon: CheckCircle2,
+    title: "Revisa antes de entregar",
+    description:
+      "Realiza una revisión integral de tu trabajo para detectar vacíos, inconsistencias y oportunidades de mejora antes de que tomes la decisión final sobre tu respuesta.",
+  },
+];
+
 const ecosystem = {
   available: [
     { title: "Mentor Evaluación Docente", desc: "Copilot especializado en el instrumento oficial." },
@@ -121,46 +166,50 @@ function LandingPage() {
         </div>
       </section>
 
-      {/* ¿CÓMO FUNCIONA? */}
-
-
+      {/* CAPACIDADES DEL MENTOR */}
       <section id="como-funciona" className="bg-secondary/50 border-y border-border/60">
-
-        <div className="container-page py-20 md:py-28">
-          <div className="max-w-2xl mx-auto text-center">
+        <div className="container-page py-20 md:py-24">
+          <div className="max-w-3xl mx-auto text-center">
             <span className="gold-rule" />
-            <h2 className="mt-4 font-display text-3xl md:text-5xl">¿Cómo funciona?</h2>
-            <p className="mt-4 text-muted-foreground">
-              Un camino claro para comenzar a trabajar con tu Mentor IA.
+            <h2 className="mt-4 font-display text-3xl md:text-5xl">
+              Tu portafolio, acompañado paso a paso
+            </h2>
+            <p className="mt-5 text-muted-foreground leading-relaxed">
+              Un Copilot especializado que comprende cada etapa del proceso y te ayuda a
+              transformar tu experiencia profesional en evidencia sólida, coherente y bien
+              fundamentada.
             </p>
           </div>
 
-          <ol className="mt-14 max-w-2xl mx-auto space-y-6">
-            {[
-              "Solicita información sobre el acceso al Copilot.",
-              "Conoce cómo funciona el Mentor Evaluación Docente.",
-              "Si deseas comenzar, adquiere tu acceso Premium.",
-              "Recibe tu licencia automáticamente por correo.",
-              "Recibe por correo el enlace al GPT Premium después de tu compra.",
-            ].map((step, i, arr) => {
-              const isLast = i === arr.length - 1;
+          <div className="mt-12 grid gap-4 md:grid-cols-2">
+            {mentorCapabilities.map(({ number, icon: Icon, title, description }) => {
               return (
-                <li key={step} className="relative">
-                  <div className="card-elegant flex flex-col items-center text-center">
-                    <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-primary text-primary-foreground font-display text-lg mb-3">
-                      {i + 1}
-                    </span>
-                    <p className="font-display text-lg text-foreground">{step}</p>
-                  </div>
-                  {!isLast && (
-                    <div aria-hidden className="flex justify-center py-3">
-                      <span className="h-6 w-px bg-border" />
+                <article key={number} className="card-elegant !p-5 md:!p-6">
+                  <div className="flex items-start gap-4">
+                    <div className="flex size-11 shrink-0 items-center justify-center rounded-md border border-gold/40 bg-gold/10 text-primary">
+                      <Icon size={20} strokeWidth={1.6} />
                     </div>
-                  )}
-                </li>
+                    <div className="min-w-0">
+                      <div className="text-[10px] font-medium uppercase tracking-[0.25em] text-gold">
+                        {number}
+                      </div>
+                      <h3 className="mt-1 font-display text-lg leading-snug text-foreground">
+                        {title}
+                      </h3>
+                      <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                        {description}
+                      </p>
+                    </div>
+                  </div>
+                </article>
               );
             })}
-          </ol>
+          </div>
+
+          <p className="mx-auto mt-12 max-w-3xl border-t border-gold/30 pt-8 text-center font-display text-xl leading-relaxed text-primary md:text-2xl">
+            Tú aportas la experiencia. El Copilot aporta estructura, análisis y orientación. La
+            decisión final siempre es tuya.
+          </p>
         </div>
       </section>
 
