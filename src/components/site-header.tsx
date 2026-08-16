@@ -31,10 +31,12 @@ export function SiteHeader() {
 
         <div className="flex items-center gap-3">
           <a
-            href="/#premium"
+            href={CONTACT_URL}
+            target="_blank"
+            rel="noreferrer"
             className="hidden sm:inline-flex text-sm text-muted-foreground hover:text-foreground transition-colors"
           >
-            Acceso Premium
+            Conocer el Copilot
           </a>
         </div>
 

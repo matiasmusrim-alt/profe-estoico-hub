@@ -1,4 +1,4 @@
-import { APP_NAME, CONTACT_URL, PAYMENT_URL } from "@/lib/config";
+import { APP_NAME, CONTACT_URL } from "@/lib/config";
 
 export function SiteFooter() {
   return (
@@ -29,12 +29,7 @@ export function SiteFooter() {
           <ul className="space-y-2 text-muted-foreground">
             <li>
               <a href={CONTACT_URL} target="_blank" rel="noreferrer" className="hover:text-foreground">
-                Solicitar información
-              </a>
-            </li>
-            <li>
-              <a href={PAYMENT_URL} target="_blank" rel="noreferrer" className="hover:text-foreground">
-                Comprar Acceso Premium
+                Conocer el Copilot
               </a>
             </li>
           </ul>
