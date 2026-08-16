@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
-import { CONTACT_URL } from "@/lib/config";
+import { CONTACT_URL, PAYMENT_URL } from "@/lib/config";
 import {
   MessageCircleQuestion,
   ListTree,
@@ -21,16 +21,6 @@ import {
 export const Route = createFileRoute("/")({
   component: LandingPage,
 });
-
-const flowSteps = [
-  { icon: Sparkles, text: "Tú aportas tu experiencia docente." },
-  { icon: MessageCircleQuestion, text: "El Copilot realiza preguntas inteligentes." },
-  { icon: ListTree, text: "Organiza tu reflexión." },
-  { icon: PenLine, text: "Fortalece la redacción." },
-  { icon: ScanSearch, text: "Analiza la coherencia." },
-  { icon: BookMarked, text: "Revisa los criterios oficiales." },
-  { icon: UserCheck, text: "Tú tomas siempre la decisión final." },
-];
 
 const mentorCapabilities = [
   {
