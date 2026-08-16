@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
-import { CONTACT_URL, PAYMENT_URL } from "@/lib/config";
+import { CONTACT_URL } from "@/lib/config";
 import {
   MessageCircleQuestion,
   ListTree,
@@ -15,6 +15,7 @@ import {
   X,
   Check,
   Star,
+  Compass,
 } from "lucide-react";
 
 export const Route = createFileRoute("/")({
@@ -34,45 +35,52 @@ const flowSteps = [
 const mentorCapabilities = [
   {
     number: "01",
-    icon: ListTree,
-    title: "Comprende lo que te están pidiendo",
+    icon: Compass,
+    title: "Comprende tu contexto",
     description:
-      "Interpreta las instrucciones, indicadores y criterios de evaluación de cada tarea para ayudarte a identificar qué debes demostrar antes de comenzar a escribir.",
+      "El Copilot recoge información sobre tu curso, estudiantes, decisiones pedagógicas y experiencia profesional antes de orientar tu trabajo.",
   },
   {
     number: "02",
-    icon: MessageCircleQuestion,
-    title: "Construye desde tu propia experiencia",
+    icon: ListTree,
+    title: "Trabaja cada indicador",
     description:
-      "El Copilot te realiza preguntas estratégicas para recuperar información de tu práctica real, organizarla y convertirla en insumos útiles para desarrollar tu portafolio.",
+      "Avanza por los módulos e indicadores del Portafolio con orientación especializada y preguntas que ayudan a profundizar tu reflexión.",
   },
   {
     number: "03",
-    icon: BookMarked,
-    title: "Fortalece cada módulo",
+    icon: PenLine,
+    title: "Construye tu respuesta",
     description:
-      "Te acompaña en el desarrollo de las tareas del portafolio, ayudándote a estructurar respuestas, profundizar tu reflexión pedagógica y fundamentar tus decisiones profesionales.",
+      "Organiza tus ideas y transforma tu experiencia pedagógica en una respuesta clara, coherente y fundamentada.",
   },
   {
     number: "04",
-    icon: ScanSearch,
-    title: "Analiza tus respuestas",
+    icon: Sparkles,
+    title: "Fortalece tu reflexión",
     description:
-      "Revisa la coherencia entre lo que escribiste, la evidencia presentada y los criterios oficiales, identificando fortalezas y aspectos que todavía puedes desarrollar.",
+      "El Copilot identifica oportunidades para profundizar el análisis pedagógico sin inventar experiencias ni reemplazar tu juicio profesional.",
   },
   {
     number: "05",
-    icon: PenLine,
-    title: "Mejora tu redacción profesional",
+    icon: ScanSearch,
+    title: "Revisa tu evidencia",
     description:
-      "Te ayuda a expresar tus ideas con mayor claridad, precisión y profundidad, manteniendo siempre tu experiencia, tu voz y tu autoría profesional.",
+      "Analiza la coherencia entre lo solicitado, tu respuesta y la evidencia que has construido.",
   },
   {
     number: "06",
-    icon: CheckCircle2,
-    title: "Revisa antes de entregar",
+    icon: BookMarked,
+    title: "Contrasta con los criterios oficiales",
     description:
-      "Realiza una revisión integral de tu trabajo para detectar vacíos, inconsistencias y oportunidades de mejora antes de que tomes la decisión final sobre tu respuesta.",
+      "Revisa tu trabajo considerando rúbricas, indicadores y criterios oficiales incorporados al sistema.",
+  },
+  {
+    number: "07",
+    icon: UserCheck,
+    title: "Tú mantienes la decisión final",
+    description:
+      "El Copilot orienta, pregunta, analiza y retroalimenta. La experiencia, las decisiones y la autoría siempre pertenecen al docente.",
   },
 ];
 
@@ -152,15 +160,11 @@ function LandingPage() {
             <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
               <a href={CONTACT_URL} target="_blank" rel="noreferrer" className="btn-primary">
                 <MessageCircleQuestion size={18} strokeWidth={1.6} />
-                Solicitar información
-              </a>
-              <a href={PAYMENT_URL} target="_blank" rel="noreferrer" className="btn-secondary">
-                <Star size={18} strokeWidth={1.6} />
-                Comprar Acceso Premium
+                Quiero conocer el Copilot
               </a>
             </div>
             <p className="mt-6 text-xs text-muted-foreground">
-              Pensada para docentes chilenos · IA ética · Desarrollo continuo
+              Diseñado para docentes chilenos · Basado en criterios oficiales · IA responsable
             </p>
           </div>
         </div>
