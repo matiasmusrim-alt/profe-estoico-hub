@@ -11,11 +11,13 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as RecuperarRouteImport } from './routes/recuperar'
 import { Route as PortalRouteImport } from './routes/portal'
+import { Route as PagoRouteImport } from './routes/pago'
 import { Route as NuevaClaveRouteImport } from './routes/nueva-clave'
 import { Route as MentorRouteImport } from './routes/mentor'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AuthCallbackRouteImport } from './routes/auth.callback'
+import { Route as ApiMercadopagoCreatePreferenceRouteImport } from './routes/api/mercadopago/create-preference'
 
 const RecuperarRoute = RecuperarRouteImport.update({
   id: '/recuperar',
@@ -25,6 +27,11 @@ const RecuperarRoute = RecuperarRouteImport.update({
 const PortalRoute = PortalRouteImport.update({
   id: '/portal',
   path: '/portal',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PagoRoute = PagoRouteImport.update({
+  id: '/pago',
+  path: '/pago',
   getParentRoute: () => rootRouteImport,
 } as any)
 const NuevaClaveRoute = NuevaClaveRouteImport.update({
@@ -52,24 +59,34 @@ const AuthCallbackRoute = AuthCallbackRouteImport.update({
   path: '/callback',
   getParentRoute: () => AuthRoute,
 } as any)
+const ApiMercadopagoCreatePreferenceRoute =
+  ApiMercadopagoCreatePreferenceRouteImport.update({
+    id: '/api/mercadopago/create-preference',
+    path: '/api/mercadopago/create-preference',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/auth': typeof AuthRouteWithChildren
   '/mentor': typeof MentorRoute
   '/nueva-clave': typeof NuevaClaveRoute
+  '/pago': typeof PagoRoute
   '/portal': typeof PortalRoute
   '/recuperar': typeof RecuperarRoute
   '/auth/callback': typeof AuthCallbackRoute
+  '/api/mercadopago/create-preference': typeof ApiMercadopagoCreatePreferenceRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/auth': typeof AuthRouteWithChildren
   '/mentor': typeof MentorRoute
   '/nueva-clave': typeof NuevaClaveRoute
+  '/pago': typeof PagoRoute
   '/portal': typeof PortalRoute
   '/recuperar': typeof RecuperarRoute
   '/auth/callback': typeof AuthCallbackRoute
+  '/api/mercadopago/create-preference': typeof ApiMercadopagoCreatePreferenceRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -77,9 +94,11 @@ export interface FileRoutesById {
   '/auth': typeof AuthRouteWithChildren
   '/mentor': typeof MentorRoute
   '/nueva-clave': typeof NuevaClaveRoute
+  '/pago': typeof PagoRoute
   '/portal': typeof PortalRoute
   '/recuperar': typeof RecuperarRoute
   '/auth/callback': typeof AuthCallbackRoute
+  '/api/mercadopago/create-preference': typeof ApiMercadopagoCreatePreferenceRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -88,27 +107,33 @@ export interface FileRouteTypes {
     | '/auth'
     | '/mentor'
     | '/nueva-clave'
+    | '/pago'
     | '/portal'
     | '/recuperar'
     | '/auth/callback'
+    | '/api/mercadopago/create-preference'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/auth'
     | '/mentor'
     | '/nueva-clave'
+    | '/pago'
     | '/portal'
     | '/recuperar'
     | '/auth/callback'
+    | '/api/mercadopago/create-preference'
   id:
     | '__root__'
     | '/'
     | '/auth'
     | '/mentor'
     | '/nueva-clave'
+    | '/pago'
     | '/portal'
     | '/recuperar'
     | '/auth/callback'
+    | '/api/mercadopago/create-preference'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -116,8 +141,10 @@ export interface RootRouteChildren {
   AuthRoute: typeof AuthRouteWithChildren
   MentorRoute: typeof MentorRoute
   NuevaClaveRoute: typeof NuevaClaveRoute
+  PagoRoute: typeof PagoRoute
   PortalRoute: typeof PortalRoute
   RecuperarRoute: typeof RecuperarRoute
+  ApiMercadopagoCreatePreferenceRoute: typeof ApiMercadopagoCreatePreferenceRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -134,6 +161,13 @@ declare module '@tanstack/react-router' {
       path: '/portal'
       fullPath: '/portal'
       preLoaderRoute: typeof PortalRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pago': {
+      id: '/pago'
+      path: '/pago'
+      fullPath: '/pago'
+      preLoaderRoute: typeof PagoRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/nueva-clave': {
@@ -171,6 +205,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthCallbackRouteImport
       parentRoute: typeof AuthRoute
     }
+    '/api/mercadopago/create-preference': {
+      id: '/api/mercadopago/create-preference'
+      path: '/api/mercadopago/create-preference'
+      fullPath: '/api/mercadopago/create-preference'
+      preLoaderRoute: typeof ApiMercadopagoCreatePreferenceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -189,8 +230,10 @@ const rootRouteChildren: RootRouteChildren = {
   AuthRoute: AuthRouteWithChildren,
   MentorRoute: MentorRoute,
   NuevaClaveRoute: NuevaClaveRoute,
+  PagoRoute: PagoRoute,
   PortalRoute: PortalRoute,
   RecuperarRoute: RecuperarRoute,
+  ApiMercadopagoCreatePreferenceRoute: ApiMercadopagoCreatePreferenceRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
