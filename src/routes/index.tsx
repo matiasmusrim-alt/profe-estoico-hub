@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
-import { CONTACT_URL, PAYMENT_URL } from "@/lib/config";
+import { CONTACT_URL } from "@/lib/config";
 import {
   MessageCircleQuestion,
   ListTree,
