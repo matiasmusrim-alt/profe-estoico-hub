@@ -152,6 +152,10 @@ function LandingPage() {
                 <MessageCircleQuestion size={18} strokeWidth={1.6} />
                 Quiero conocer el Copilot
               </a>
+              <a href={PAYMENT_URL} target="_blank" rel="noreferrer" className="btn-outline">
+                <Star size={18} strokeWidth={1.6} />
+                Comprar Acceso Premium
+              </a>
             </div>
             <p className="mt-6 text-xs text-muted-foreground">
               Diseñado para docentes chilenos · Basado en criterios oficiales · IA responsable
