@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
-import { CONTACT_URL } from "@/lib/config";
+import { CONTACT_URL, PAYMENT_URL } from "@/lib/config";
 import {
   MessageCircleQuestion,
   ListTree,
@@ -21,16 +21,6 @@ import {
 export const Route = createFileRoute("/")({
   component: LandingPage,
 });
-
-const flowSteps = [
-  { icon: Sparkles, text: "Tú aportas tu experiencia docente." },
-  { icon: MessageCircleQuestion, text: "El Copilot realiza preguntas inteligentes." },
-  { icon: ListTree, text: "Organiza tu reflexión." },
-  { icon: PenLine, text: "Fortalece la redacción." },
-  { icon: ScanSearch, text: "Analiza la coherencia." },
-  { icon: BookMarked, text: "Revisa los criterios oficiales." },
-  { icon: UserCheck, text: "Tú tomas siempre la decisión final." },
-];
 
 const mentorCapabilities = [
   {
@@ -162,6 +152,10 @@ function LandingPage() {
                 <MessageCircleQuestion size={18} strokeWidth={1.6} />
                 Quiero conocer el Copilot
               </a>
+              <a href={PAYMENT_URL} target="_blank" rel="noreferrer" className="btn-secondary">
+                <Star size={18} strokeWidth={1.6} />
+                Comprar Acceso Premium
+              </a>
             </div>
             <p className="mt-6 text-xs text-muted-foreground">
               Diseñado para docentes chilenos · Basado en criterios oficiales · IA responsable
@@ -215,82 +209,6 @@ function LandingPage() {
             decisión final siempre es tuya.
           </p>
         </div>
-      </section>
-
-      {/* PREMIUM */}
-      <section id="premium" className="container-page py-20 md:py-28">
-        <div className="max-w-2xl mx-auto">
-          <div className="card-elegant border-gold/40">
-            <span className="inline-flex items-center gap-2 rounded-full border border-gold/40 bg-gold/10 px-3 py-1 text-[10px] uppercase tracking-widest text-gold-foreground">
-              <span className="h-1.5 w-1.5 rounded-full bg-gold" /> Acceso Premium
-            </span>
-            <div className="mt-4">
-              <span className="gold-rule" />
-            </div>
-            <h2 className="mt-4 font-display text-2xl md:text-3xl text-foreground">
-              ¿Qué incluye el acceso Premium?
-            </h2>
-
-            <ul className="mt-6 grid gap-3 sm:grid-cols-2">
-              {[
-                "Acceso completo al Mentor Evaluación Docente",
-                "Actualizaciones permanentes",
-                "Acceso a nuevos módulos",
-                "Biblioteca Docente",
-                "Comunidad",
-                "Simulador ECEP (cuando sea publicado)",
-              ].map((item) => (
-                <li key={item} className="flex items-start gap-3 text-sm text-foreground/90">
-                  <Check size={16} className="mt-0.5 text-gold shrink-0" />
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-
-          </div>
-        </div>
-      </section>
-
-      {/* ASÍ TRABAJA */}
-      <section id="flujo" className="container-page py-20 md:py-28">
-        <div className="max-w-2xl mx-auto text-center">
-          <span className="gold-rule" />
-          <h2 className="mt-4 font-display text-3xl md:text-5xl">Así trabaja Profe Estoico</h2>
-          <p className="mt-4 text-muted-foreground">
-            Un flujo sereno y estructurado que acompaña cada etapa de tu preparación.
-          </p>
-        </div>
-
-        <ol className="mt-14 max-w-3xl mx-auto space-y-4">
-          {flowSteps.map((step, i) => {
-            const Icon = step.icon;
-            const isLast = i === flowSteps.length - 1;
-            return (
-              <li key={step.text} className="relative">
-                <div className="card-elegant flex items-center gap-4">
-                  <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-md bg-primary/5 text-primary border border-border">
-                    <Icon size={20} strokeWidth={1.6} />
-                  </span>
-                  <div className="flex-1">
-                    <div className="text-[10px] uppercase tracking-widest text-muted-foreground">
-                      Paso 0{i + 1}
-                    </div>
-                    <div className="font-display text-lg text-foreground">{step.text}</div>
-                  </div>
-                </div>
-                {!isLast && (
-                  <div aria-hidden className="flex justify-center py-2">
-                    <span className="h-6 w-px bg-border" />
-                  </div>
-                )}
-              </li>
-            );
-          })}
-        </ol>
-
-        <p className="mt-12 text-center text-sm italic text-muted-foreground max-w-2xl mx-auto">
-          "La IA acompaña el proceso. El juicio profesional siempre pertenece al docente."
-        </p>
       </section>
 
       {/* ECOSISTEMA */}
