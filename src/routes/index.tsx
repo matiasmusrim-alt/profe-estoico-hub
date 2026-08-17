@@ -1,7 +1,8 @@
+import { useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
-import { CONTACT_URL, PAYMENT_URL } from "@/lib/config";
+import { CONTACT_URL } from "@/lib/config";
 import {
   MessageCircleQuestion,
   ListTree,
@@ -16,6 +17,7 @@ import {
   Check,
   Star,
   Compass,
+  LoaderCircle,
 } from "lucide-react";
 
 export const Route = createFileRoute("/")({
@@ -122,6 +124,67 @@ const faqs = [
   },
 ];
 
+function PremiumCheckoutButton() {
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  const handleCheckout = async () => {
+    if (isLoading) return;
+
+    setIsLoading(true);
+    setError(null);
+
+    try {
+      const response = await fetch("/api/mercadopago/create-preference", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({}),
+      });
+      const payload = (await response.json().catch(() => ({}))) as {
+        init_point?: string;
+        error?: string;
+      };
+
+      if (!response.ok || !payload.init_point) {
+        throw new Error(payload.error ?? "No fue posible iniciar el pago. Inténtalo nuevamente.");
+      }
+
+      window.location.assign(payload.init_point);
+    } catch (checkoutError) {
+      setError(
+        checkoutError instanceof Error
+          ? checkoutError.message
+          : "No fue posible iniciar el pago. Inténtalo nuevamente.",
+      );
+      setIsLoading(false);
+    }
+  };
+
+  return (
+    <div className="flex flex-col items-center gap-2">
+      <button
+        type="button"
+        onClick={handleCheckout}
+        disabled={isLoading}
+        aria-busy={isLoading}
+        className="btn-secondary disabled:cursor-not-allowed disabled:opacity-60"
+      >
+        {isLoading ? (
+          <LoaderCircle size={18} strokeWidth={1.6} className="animate-spin" />
+        ) : (
+          <Star size={18} strokeWidth={1.6} />
+        )}
+        {isLoading ? "Preparando pago…" : "Comprar Acceso Premium"}
+      </button>
+      {error && (
+        <p role="alert" className="max-w-xs text-center text-xs text-destructive">
+          {error}
+        </p>
+      )}
+    </div>
+  );
+}
+
 function LandingPage() {
   return (
     <div className="min-h-screen flex flex-col">
@@ -152,10 +215,7 @@ function LandingPage() {
                 <MessageCircleQuestion size={18} strokeWidth={1.6} />
                 Quiero conocer el Copilot
               </a>
-              <a href={PAYMENT_URL} target="_blank" rel="noreferrer" className="btn-secondary">
-                <Star size={18} strokeWidth={1.6} />
-                Comprar Acceso Premium
-              </a>
+              <PremiumCheckoutButton />
             </div>
             <p className="mt-6 text-xs text-muted-foreground">
               Diseñado para docentes chilenos · Basado en criterios oficiales · IA responsable
