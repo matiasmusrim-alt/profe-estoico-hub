@@ -22,7 +22,15 @@ export const Route = createFileRoute("/api/mercadopago/create-preference")({
 
         const origin = new URL(request.url).origin;
         const externalReference = `premium-${Date.now()}-${crypto.randomUUID()}`;
-        const webhookUrl = process.env["MERCADOPAGO_WEBHOOK_URL"];
+        const makeWebhookUrl = process.env["MERCADOPAGO_WEBHOOK_URL"];
+
+        if (!makeWebhookUrl) {
+          console.error("[mercadopago] MERCADOPAGO_WEBHOOK_URL no está configurado");
+          return jsonError(
+            "La entrega automática del acceso no está configurada todavía. Intenta más tarde o escríbenos.",
+            503,
+          );
+        }
 
         const preference: Record<string, unknown> = {
           items: [
@@ -39,11 +47,8 @@ export const Route = createFileRoute("/api/mercadopago/create-preference")({
             failure: `${origin}/pago?status=failure`,
             pending: `${origin}/pago?status=pending`,
           },
+          notification_url: `${origin}/api/mercadopago/webhook`,
         };
-
-        if (webhookUrl) {
-          preference["notification_url"] = webhookUrl;
-        }
 
         try {
           const response = await fetch("https://api.mercadopago.com/checkout/preferences", {
