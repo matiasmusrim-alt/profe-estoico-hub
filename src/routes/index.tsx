@@ -2,7 +2,7 @@ import { useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
-import { CONTACT_URL } from "@/lib/config";
+import { CONTACT_URL, ECEP_URL } from "@/lib/config";
 import {
   MessageCircleQuestion,
   ListTree,
@@ -79,9 +79,9 @@ const mentorCapabilities = [
 const ecosystem = {
   available: [
     { title: "Mentor Evaluación Docente", desc: "Copilot especializado en el instrumento oficial." },
+    { title: "Prueba de conocimientos ECEP", desc: "Accede al proyecto ECEP con su autenticación y flujo de pago propios." },
   ],
   soon: [
-    { title: "Simulador ECEP", desc: "Práctica del conocimiento específico." },
     { title: "Biblioteca Docente", desc: "Documentos y rúbricas curadas." },
     { title: "Banco de Evidencias", desc: "Organiza evidencias de tu práctica." },
     { title: "Currículum Diversificado", desc: "Herramientas para la diversificación." },
@@ -296,6 +296,16 @@ function LandingPage() {
                   </span>
                   <h3 className="font-display text-lg text-foreground pr-20">{m.title}</h3>
                   <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{m.desc}</p>
+                  {m.title === "Prueba de conocimientos ECEP" && (
+                    <a
+                      href={ECEP_URL}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="btn-primary mt-5 inline-flex"
+                    >
+                      Acceder al ECEP
+                    </a>
+                  )}
                 </article>
               ))}
             </div>
