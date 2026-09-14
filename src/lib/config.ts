@@ -14,6 +14,10 @@ export const DEMO_URL: string =
 export const CONTACT_URL: string =
   (import.meta.env.VITE_CONTACT_URL as string | undefined) ?? "https://wa.me/56944292644";
 
+// Aplicación ECEP independiente, con su propia autenticación y flujo de pago.
+export const ECEP_URL =
+  "https://profe-estoico-ecep.matias-musri-m.chatgpt.site/";
+
 // URL de compra de acceso Premium. Se reemplazará cuando esté disponible.
 // Puede sobrescribirse mediante la variable de entorno VITE_PAYMENT_URL.
 export const PAYMENT_URL: string =
